@@ -1,0 +1,111 @@
+.btn-1 {
+  background: rgb(144, 110, 22);
+  background: linear-gradient(
+    0deg,
+    rgb(144, 110, 22) 0%,
+    rgb(214, 161, 27) 100%
+  );
+  border: none;
+  border-radius: 10ex;
+  width: 150px;
+  height: 40px;
+  margin-top: 30px;
+  color: aliceblue;
+}
+.btn-1:hover {
+  background: rgb(214, 161, 27);
+  background: linear-gradient(
+    0deg,
+    rgb(214, 161, 27) 0%,
+    rgb(233, 186, 69) 100%
+  );
+}
+.portion {
+  background-image: url(int-banner2.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+ 
+}
+.container11{
+  width: 1500px;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  background-color: rgb(103, 100, 100);
+}
+.wrapper11{
+ 
+  display: flex;
+  animation: slide11 16s infinite;
+}
+@keyframes slide11{
+  0%{
+      transform: translateX(0);
+  }
+  25%{
+      transform: translateX(0);
+  }
+  30%{
+      transform: translateX(-100%);
+  }
+  50%{
+      transform: translateX(-100%);
+  }
+  55%{
+      transform: translateX(-200%);
+  }
+  75%{
+      transform: translateX(-200%);
+  }
+  80%{
+      transform: translateX(-300%);
+  }
+  100%{
+      transform: translateX(-300%);
+  }
+}
+.material-icons {vertical-align:-14%}
+.google-map {
+    padding-bottom: 50%;
+    position: relative;
+}
+
+.google-map iframe {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+.material-icons {vertical-align:-14%}
+.google-map {
+    padding-bottom: 50%;
+    position: relative;
+}
+
+.google-map iframe {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+.btn {
+border: none;
+background-color: inherit;
+padding: 8px 10px;
+font-size: 12px;
+cursor: pointer;
+display: inline-block;
+}
+.btn:hover {background: #eee;}      
+.error {
+  color: red;
+}
+.error1 {
+  color: red;
+}

@@ -1,0 +1,49 @@
+
+.container11{
+    width:auto;
+    position: relative;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    background-color: rgb(51, 48, 48);
+  
+  margin: auto;
+  /*this to solve "the content will not be cut when the window is smaller than the content": */
+  max-width: auto;
+  max-height: auto;
+  
+}
+.wrapper11{
+   
+    display: flex;
+    animation: slide11 9s infinite;
+}
+@keyframes slide11{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+
+}
+

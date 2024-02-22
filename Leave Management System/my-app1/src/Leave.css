@@ -1,0 +1,114 @@
+/* General Styles */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  margin: 20px;
+  height: 80vh;
+
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  background-color: aqua;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color:#f0f0f0;
+}
+
+/* Sidebar Styles */
+
+h2 {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+li:hover {
+  font-weight: bolder;
+}
+
+/* Form Styles */
+
+/* form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+label {
+  margin-bottom: 50px;
+}
+
+input[type="text"],
+textarea {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+} */
+
+/* List Styles */
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Table Styles */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+/* Other Styles */
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
