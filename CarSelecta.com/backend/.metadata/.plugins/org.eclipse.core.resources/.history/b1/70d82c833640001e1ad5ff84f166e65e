@@ -1,0 +1,40 @@
+package org.program;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.junit.jupiter.api.Test;
+import org.program.entity.Admin;
+import org.program.entity.NewCar;
+import org.program.entity.User;
+import org.program.entity.Wishlist;
+import org.program.repository.AdminRepository;
+import org.program.repository.NewCarRepository;
+import org.program.repository.UserRepository;
+import org.program.repository.WishListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CarselectaBackendApplicationTests {
+
+	@Autowired
+	private WishListRepository wishListRepository;
+
+	@Autowired
+	private NewCarRepository newCarRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Test
+	void contextLoads() {
+		User user = userRepository.findByEmail("kunalbsuryawanshi@gmail.com");
+		List<Wishlist> list = wishListRepository.findByUser(user);
+		
+		wishListRepository.deleteAll(list);
+
+	}
+
+}

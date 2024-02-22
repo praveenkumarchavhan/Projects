@@ -1,0 +1,39 @@
+package org.program.service;
+
+import java.util.Base64;
+
+import org.program.entity.User;
+import org.program.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+//	  @Autowired
+//	  private BCryptPasswordEncoder passwordEncoder;
+	
+	public void userSignupService(User user) {
+//		user.setCreatePassword(passwordEncoder.encode(user.getCreatePassword()));
+		byte[] password = Base64.getEncoder().encode(user.getPassword().getBytes());
+		user.setPassword(password.toString());
+		userRepository.save(user);
+		
+	}
+	
+	public int userLoginService(User user) {
+		byte[] password = Base64.getEncoder().encode(user.getPassword().getBytes());
+		user.setPassword(password.toString());
+		User user1 = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+		if(user1 == null) {
+			return 500;
+		}
+		return 200;
+	}
+}

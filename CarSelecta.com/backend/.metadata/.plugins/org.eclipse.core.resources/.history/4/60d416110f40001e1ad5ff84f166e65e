@@ -1,0 +1,38 @@
+package org.program;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.program.entity.Admin;
+import org.program.entity.User;
+import org.program.entity.Wishlist;
+import org.program.repository.AdminRepository;
+import org.program.repository.NewCarRepository;
+import org.program.repository.UserRepository;
+import org.program.repository.WishListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CarselectaBackendApplicationTests {
+
+	@Autowired
+	private WishListRepository wishListRepository;
+
+	@Autowired
+	private NewCarRepository newCarRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Test
+	void contextLoads() {
+		List<Wishlist> wishList = wishListRepository.findByUserId(2);
+		
+		for (Wishlist wishlist2 : wishList) {
+			System.out.println(wishList);
+		}
+
+	}
+
+}

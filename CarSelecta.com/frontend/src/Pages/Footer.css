@@ -1,0 +1,26 @@
+li,
+footer {
+    font-size: 13px;
+    color: rgb(102, 101, 101);
+    line-height: 30px;
+}
+
+.lightb {
+    color: rgb(0, 0, 0);
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.icon {
+    word-spacing: 40px;
+}
+
+a:link {
+    color: black;
+}
+
+/* India's 1 row css */
+.row2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

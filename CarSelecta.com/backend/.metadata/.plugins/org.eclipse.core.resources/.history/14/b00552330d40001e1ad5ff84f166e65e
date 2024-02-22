@@ -1,0 +1,36 @@
+package org.program.service;
+
+import java.util.List;
+
+import org.program.entity.NewCar;
+import org.program.entity.User;
+import org.program.entity.Wishlist;
+import org.program.repository.NewCarRepository;
+import org.program.repository.UserRepository;
+import org.program.repository.WishListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class WishListService {
+	
+	@Autowired
+	private WishListRepository wishListRepository;
+	
+	@Autowired
+	private NewCarRepository newCarRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	public void addToWishListService(List<Integer> favorites, String email) {
+		User user = userRepository.findByEmail(email);
+		
+		List<NewCar> cars = newCarRepository.findAllById(favorites);
+				
+		Wishlist wishList = new Wishlist();
+		wishList.setNewCar(cars);
+		wishList.setUser(user);
+		wishListRepository.save(wishList);
+	}
+}

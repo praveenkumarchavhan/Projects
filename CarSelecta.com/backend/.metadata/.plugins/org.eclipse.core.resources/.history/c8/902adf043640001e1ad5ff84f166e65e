@@ -1,0 +1,42 @@
+package org.program;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.junit.jupiter.api.Test;
+import org.program.entity.Admin;
+import org.program.entity.NewCar;
+import org.program.entity.User;
+import org.program.entity.Wishlist;
+import org.program.repository.AdminRepository;
+import org.program.repository.NewCarRepository;
+import org.program.repository.UserRepository;
+import org.program.repository.WishListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class CarselectaBackendApplicationTests {
+
+	@Autowired
+	private WishListRepository wishListRepository;
+
+	@Autowired
+	private NewCarRepository newCarRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Test
+	void contextLoads() {
+		List<Wishlist> wishlistItems = wishListRepository.findByUser_UserIdAndNewCarIsNotNull(2);
+		Set<NewCar> newCars = new HashSet<>();
+		for (Wishlist wishlist : wishlistItems) {
+			newCars.addAll(wishlist.getNewCar());
+		}
+		System.out.println(newCars.toString());
+
+	}
+
+}

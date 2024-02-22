@@ -1,0 +1,16 @@
+package org.program.controller;
+
+import org.program.service.EmailDataService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin
+public class EmailDataController {
+
+	@Autowired
+	private EmailDataService emailDataService;
+	
+	
+}

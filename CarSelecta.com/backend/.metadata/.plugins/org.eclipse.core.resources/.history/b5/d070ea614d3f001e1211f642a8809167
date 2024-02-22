@@ -1,0 +1,29 @@
+package org.program.service;
+
+import org.program.entity.User;
+import org.program.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+
+	public void userSignupService(String name, String email, String phoneNumber, String state, String city,
+			String createPassword, String confirmPassword) {
+		User user = new User();
+		user.setName(name);
+		user.setEmail(email);
+		user.setPhoneNumber(phoneNumber);
+		user.setState(state);
+		user.setCity(city);
+		user.setCreatePassword(passwordEncoder.encode(createPassword));
+		userRepository.save(user);
+		
+	}
+}

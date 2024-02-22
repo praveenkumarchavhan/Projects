@@ -1,0 +1,15 @@
+package org.program.repository;
+
+import java.util.List;
+import java.util.Set;
+
+import org.program.entity.User;
+import org.program.entity.Wishlist;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface WishListRepository extends JpaRepository<Wishlist, Integer>{
+	
+	
+	Set<Wishlist> findByUser_UserIdAndNewCarIsNotNull(int userId);
+
+}

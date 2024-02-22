@@ -1,0 +1,16 @@
+package org.program.service;
+
+import org.program.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserService {
+	@Autowired
+	private UserRepository userRepository;
+
+	public void userSignupService(String name, String email, String phoneNumber, String state, String city,
+			String createPassword, String confirmPassword) {
+		
+	}
+}

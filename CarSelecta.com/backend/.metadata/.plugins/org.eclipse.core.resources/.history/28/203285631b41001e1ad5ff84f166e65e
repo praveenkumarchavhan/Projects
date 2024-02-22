@@ -1,0 +1,162 @@
+package org.program.service;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
+
+import org.program.entity.CarPricing;
+import org.program.entity.NewCar;
+import org.program.repository.NewCarRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+@Service
+public class NewCarService {
+
+	@Autowired
+	private NewCarRepository carRepository;
+	
+	public void addNewCarService(
+			MultipartFile carImage,
+			String carName,
+	        String carModel,
+	        String carBrand,
+	        String carType,
+	        double carPrice,
+	        String ARAIMileage,
+	        String cityMileage,
+	        String highwayMileage,
+	        String fuelType,
+	        String transmission,
+	        String modelYear,
+	        String description,
+	        double exShowroomPrice,
+	        double roadTax,
+	        double insurance,
+	        double otherCharges,
+	        double optionalCharges,
+	        String EMI
+			)
+			throws IOException {
+		NewCar car = new NewCar();
+		car.setCarImage(carImage.getBytes());
+		car.setCarName(carName);
+		car.setCarModel(carModel);
+		car.setCarBrand(carBrand);
+		car.setCarType(carType);
+		car.setCarPrice(carPrice);
+		car.setARAIMileage(ARAIMileage);
+		car.setCityMileage(cityMileage);
+		car.setHighwayMileage(highwayMileage);
+		car.setFuelType(fuelType);
+		car.setTransmission(transmission);
+		car.setModelYear(modelYear);
+		car.setDescription(description);
+		CarPricing carPricing = new CarPricing();
+		carPricing.setExShowroomPrice(exShowroomPrice);
+		carPricing.setRoadTax(roadTax);
+		carPricing.setInsurance(insurance);
+		carPricing.setOtherCharges(otherCharges);
+		carPricing.setOptionalCharges(optionalCharges);
+		carPricing.setEMI(EMI);
+		car.setCarPricing(carPricing);
+		carRepository.save(car);
+	}
+//	public NewCar findCarById(int id) {
+//		return carRepository.findByNewCarId(id);
+//	}
+//
+//	public void updateCarService(int newCarId, String carName, String modelBrand, String modelType, double carPrice,
+//			String mileage, String fuelType, String transmission, String modelYear, String description,
+//			MultipartFile carImage) throws IOException {
+//		Optional<NewCar> optional = carRepository.findById(newCarId);
+//		NewCar car = new NewCar();
+//		car = optional.get();
+//
+//		car.setCarName(carName);
+//		car.setCarBrand(modelBrand);
+//		car.setCarType(modelType);
+//		car.setCarPrice(carPrice);
+////		car.setMileage(mileage);
+//		car.setFuelType(fuelType);
+//		car.setTransmission(transmission);
+//		car.setModelYear(modelYear);
+//		car.setDescription(description);
+//		car.setCarImage(carImage.getBytes());
+//
+//		carRepository.save(car);
+//
+//	}
+//
+//	public List<NewCar> getAllNewCarsService() {
+//
+//		return carRepository.findAll();
+//
+//	}
+//
+//	public List<NewCar> getNewCarBySearch(String modelName) {
+//
+//		return carRepository.findByModelName(modelName);
+//	}
+//
+//	public void deleteNewCarService(int newCarId) {
+//		carRepository.deleteById(newCarId);
+//	}
+//
+//	public List<NewCar> searchCarByPriceAndTypeService(String minPrice, String maxPrice, String modelType) {
+//
+//		if (minPrice.equals("1.%")) {
+//			String price2 = "2.%";
+//			String price3 = "3.%";
+//			String price4 = "4.%";
+//			return carRepository.searchCarByPriceAndType(minPrice, price2, price3, price4, maxPrice, modelType);
+//		} else if (minPrice.equals("5.%")) {
+//
+//			String price6 = "6.%";
+//			String price7 = "7.%";
+//			String price8 = "8.%";
+//			String price9 = "9.%";
+//			return carRepository.searchCarByPriceAndType(minPrice, price6, price7, price8, price9, maxPrice, modelType);
+//		} else if (minPrice.equals("10.%")) {
+//
+//			String price11 = "11.%";
+//			String price12 = "12.%";
+//			String price13 = "13.%";
+//			String price14 = "14.%";
+//			return carRepository.searchCarByPriceAndType(minPrice, price11, price12, price13, price14, maxPrice,
+//					modelType);
+//		} else if (minPrice.equals("15.%")) {
+//
+//			String price16 = "16.%";
+//			String price17 = "17.%";
+//			String price18 = "18.%";
+//			String price19 = "19.%";
+//			return carRepository.searchCarByPriceAndType(minPrice, price16, price17, price18, price19, maxPrice,
+//					modelType);
+//		} else {
+//
+//			String price21 = "21.%";
+//			String price22 = "22.%";
+//			String price23 = "23.%";
+//			String price24 = "24.%";
+//			String price25 = "25.%";
+//			String price26 = "26.%";
+//			String price27 = "27.%";
+//			String price28 = "28.%";
+//			String price29 = "29.%";
+//			String price30 = "30.%";
+//			String price31 = "31.%";
+//			String price32 = "32.%";
+//			String price33 = "33.%";
+//			String price34 = "34.%";
+//			
+//			return carRepository.searchCarByPriceAndType(minPrice, price21, price22, price23, price24, price25, price26,
+//					price27, price28, price29, price30, price31, price32, price33, price34,
+//					maxPrice, modelType);
+//		}
+//
+//	}
+
+}

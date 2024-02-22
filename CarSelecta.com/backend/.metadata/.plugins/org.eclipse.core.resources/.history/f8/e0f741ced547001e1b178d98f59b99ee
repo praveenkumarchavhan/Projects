@@ -1,0 +1,25 @@
+package org.program.DTO;
+
+import org.program.entity.CarPricing;
+import org.program.entity.NewCar;
+
+public class NewCarWithPricing {
+	private NewCar newCar;
+    private CarPricing carPricing;
+    
+	public NewCar getNewCar() {
+		return newCar;
+	}
+	public void setNewCar(NewCar newCar) {
+		this.newCar = newCar;
+	}
+	public CarPricing getCarPricing() {
+		return carPricing;
+	}
+	public void setCarPricing(CarPricing carPricing) {
+		this.carPricing = carPricing;
+	}
+    
+    
+}
+

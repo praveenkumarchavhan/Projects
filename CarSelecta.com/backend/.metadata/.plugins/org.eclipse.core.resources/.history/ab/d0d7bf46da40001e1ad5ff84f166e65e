@@ -1,0 +1,26 @@
+package org.program.repository;
+
+import java.util.List;
+
+import org.program.entity.NewCar;
+import org.program.entity.User;
+import org.program.entity.Wishlist;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+
+public interface WishListRepository extends JpaRepository<Wishlist, Integer> {
+
+	List<Wishlist> findByUser_UserIdAndNewCarIsNotNull(int userId);
+
+	Wishlist findByUser(User user);
+
+//	List<Wishlist> findByUser(User user);
+	@Query("select w from Wishlist w join w.newCar n where n.newCarId = ?1")
+	List<Wishlist> findNewCarByNewCarId(int newCarId);
+
+	@Modifying
+	@Query("DELETE FROM Wishlist w WHERE ?1 IN (SELECT n.newCarId FROM w.newCar n)")
+	void deleteByNewCarId(int newCarId);
+
+}

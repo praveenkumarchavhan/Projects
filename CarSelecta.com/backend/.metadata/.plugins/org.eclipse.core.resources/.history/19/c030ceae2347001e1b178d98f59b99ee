@@ -1,0 +1,101 @@
+package org.program;
+
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import org.junit.jupiter.api.Test;
+import org.program.entity.Admin;
+import org.program.entity.NewCar;
+import org.program.entity.Rating;
+import org.program.entity.Review;
+import org.program.entity.User;
+import org.program.entity.WishList;
+import org.program.repository.AdminRepository;
+import org.program.repository.CarPricingRepository;
+import org.program.repository.NewCarRepository;
+import org.program.repository.RatingRepository;
+import org.program.repository.ReviewRepository;
+import org.program.repository.UserRepository;
+import org.program.repository.WishListRepository;
+//import org.program.repository.AdminRepository;
+//import org.program.repository.NewCarRepository;
+//import org.program.repository.UserRepository;
+//import org.program.repository.WishListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+
+@SpringBootTest
+class CarselectaBackendApplicationTests {
+
+	@Autowired
+	private WishListRepository wishListRepository;
+
+	@Autowired
+	private NewCarRepository newCarRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private AdminRepository adminRepository;
+
+	@Autowired
+	private CarPricingRepository carPricingRepository;
+	@Autowired
+	private RatingRepository ratingRepository;
+	@Autowired
+	private ReviewRepository reviewRepository;
+
+	@Autowired
+	private JavaMailSender emailSender;
+
+	  final String username = "kunalbsuryawanshi@gmail.com";
+      final String password = "KBS@2482000$!";
+
+	@Test
+	void contextLoads() {
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "email-smtp.us-west-2.amazonaws.com");
+		props.put("mail.smtp.port", "25");
+		
+		Session session = Session.getInstance(props, new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
+		
+
+		 try {
+	            Message message = new MimeMessage(session);
+	            message.setFrom(new InternetAddress(username));
+	            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("recipient@example.com"));
+	            message.setSubject("Test Subject");
+	            message.setText("This is a test email from Java.");
+
+	            Transport.send(message);
+
+	            System.out.println("Email sent successfully.");
+	        } catch (MessagingException e) {
+	            e.printStackTrace();
+	        }
+	}
+
+}

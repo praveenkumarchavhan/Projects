@@ -1,0 +1,5 @@
+package org.program.converter;
+
+public class NewCarToNewCarWithPricingConverter {
+
+}

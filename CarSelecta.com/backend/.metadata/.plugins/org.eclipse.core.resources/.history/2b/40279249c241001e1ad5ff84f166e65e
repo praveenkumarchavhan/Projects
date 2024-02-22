@@ -1,0 +1,237 @@
+package org.program.entity;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@Entity
+public class NewCar {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "new_car_id")
+	private int newCarId;
+	@Lob
+	private byte[] carImage;
+	private String carName;
+	private String carModel;
+	private String carBrand;
+	private String carType;
+	private double carPrice;
+	private String ARAIMileage;
+	private String cityMileage;
+	private String highwayMileage;
+	private String fuelType;
+	private String transmission;
+	private String modelYear;
+	@Column(length = 2000)
+	private String description;
+//	@JsonProperty
+//	@JsonIgnore
+//	@JsonIgnoreProperties("newCar")
+	@OneToOne(mappedBy = "newCar", cascade = CascadeType.ALL)
+	private CarPricing carPricing;
+//	@JsonProperty
+	
+//	@JsonManagedReference
+//	@JsonIgnoreProperties("newCar")
+	@ManyToOne
+	@JoinColumn(name = "admin_id")
+	private Admin admin;
+	
+//	@JsonProperty
+	@OneToMany(mappedBy = "newCar")
+	private List<Rating> ratings;
+	
+//	@JsonProperty
+	@OneToMany(mappedBy = "newCar")
+	private List<Review> reviews;
+	
+//	@JsonProperty
+//	@JsonIgnore
+	@OneToMany(mappedBy = "newCar")
+    private List<WishList> wishLists;
+
+	public int getNewCarId() {
+		return newCarId;
+	}
+
+	public void setNewCarId(int newCarId) {
+		this.newCarId = newCarId;
+	}
+
+	public byte[] getCarImage() {
+		return carImage;
+	}
+
+	public void setCarImage(byte[] carImage) {
+		this.carImage = carImage;
+	}
+
+	public String getCarName() {
+		return carName;
+	}
+
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+
+	public String getCarModel() {
+		return carModel;
+	}
+
+	public void setCarModel(String carModel) {
+		this.carModel = carModel;
+	}
+
+	public String getCarBrand() {
+		return carBrand;
+	}
+
+	public void setCarBrand(String carBrand) {
+		this.carBrand = carBrand;
+	}
+
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
+	public double getCarPrice() {
+		return carPrice;
+	}
+
+	public void setCarPrice(double carPrice) {
+		this.carPrice = carPrice;
+	}
+
+	
+	public String getARAIMileage() {
+		return ARAIMileage;
+	}
+
+	public void setARAIMileage(String aRAIMileage) {
+		ARAIMileage = aRAIMileage;
+	}
+
+	public String getCityMileage() {
+		return cityMileage;
+	}
+
+	public void setCityMileage(String cityMileage) {
+		this.cityMileage = cityMileage;
+	}
+
+	public String getHighwayMileage() {
+		return highwayMileage;
+	}
+
+	public void setHighwayMileage(String highwayMileage) {
+		this.highwayMileage = highwayMileage;
+	}
+
+	public String getFuelType() {
+		return fuelType;
+	}
+
+	public void setFuelType(String fuelType) {
+		this.fuelType = fuelType;
+	}
+
+	public String getTransmission() {
+		return transmission;
+	}
+
+	public void setTransmission(String transmission) {
+		this.transmission = transmission;
+	}
+
+	public String getModelYear() {
+		return modelYear;
+	}
+
+	public void setModelYear(String modelYear) {
+		this.modelYear = modelYear;
+	}
+
+	public CarPricing getCarPricing() {
+		return carPricing;
+	}
+
+	public void setCarPricing(CarPricing carPricing) {
+		this.carPricing = carPricing;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public List<WishList> getWishLists() {
+		return wishLists;
+	}
+
+	public void setWishLists(List<WishList> wishLists) {
+		this.wishLists = wishLists;
+	}
+
+	@Override
+	public String toString() {
+		return "NewCar [newCarId=" + newCarId + ", carName=" + carName + ", carBrand=" + carBrand + ", carType="
+				+ carType + ", carPrice=" + carPrice + "]";
+	}
+	
+	
+	
+	
+
+}

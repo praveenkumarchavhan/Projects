@@ -1,0 +1,95 @@
+package org.program.service;
+
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.program.entity.NewCar;
+import org.program.entity.Rating;
+import org.program.entity.Review;
+import org.program.entity.User;
+import org.program.repository.NewCarRepository;
+import org.program.repository.RatingRepository;
+import org.program.repository.ReviewRepository;
+import org.program.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RatingService {
+
+	@Autowired
+	private RatingRepository ratingRepository;
+
+	@Autowired
+	private ReviewRepository reviewRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	private NewCarRepository newCarRepository;
+
+	public void setUserRatingAndReview(String email, double rating, int newCarId, String reviewTitle,
+			String reviewDescription) {
+		LocalDate currentDate = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+		String formattedDate = currentDate.format(formatter);
+
+		User user = userRepository.findByEmail(email);
+		NewCar newCar = newCarRepository.findByNewCarId(newCarId);
+		Rating rating1 = new Rating();
+		rating1.setScore(rating);
+		rating1.setDateOfRating(formattedDate);
+		rating1.setUser(user);
+		rating1.setNewCar(newCar);
+		Review review = new Review();
+		review.setHeading(reviewTitle);
+		review.setComment(reviewDescription);
+		review.setDateOfReview(formattedDate);
+		review.setNewCar(newCar);
+		review.setUser(user);
+		ratingRepository.save(rating1);
+		reviewRepository.save(review);
+
+	}
+
+	public Map<String, Object> getCarRating(int newCarId) {
+		List<Rating> ratings = ratingRepository.findAllByNewCar_NewCarId(newCarId);
+		int totalNumberOfRatings = 0;
+		double ratingTotal = 0;
+		for (Rating rating : ratings) {
+			totalNumberOfRatings++;
+			ratingTotal += rating.getScore();
+		}
+
+		DecimalFormat decimalFormat = new DecimalFormat("#.#");
+		double rating = Double.parseDouble(decimalFormat.format(ratingTotal / totalNumberOfRatings));
+		Map<String, Object> map = new HashMap<>();
+		map.put("rating",rating );
+		map.put("totalRatings", totalNumberOfRatings);
+		return map;
+	}
+
+	public Map<String, Object> getCarRatingAndReview(int newCarId) {
+		List<Rating> ratings = ratingRepository.findAllByNewCar_NewCarId(newCarId);
+		List<Review> reviews = reviewRepository.findAllByNewCar_NewCarId(newCarId);
+		List<User> user = new ArrayList<>();
+		for (Rating rating : ratings) {
+			user.add(rating.getUser());
+		}
+		for (Review review : reviews) {
+			
+		}
+		Map<String, Object> map = new HashMap<>();
+		map.put("ratings", ratings);
+		map.put("reviews", reviews);
+		map.put("user", user);
+	
+		return map;
+	}
+}

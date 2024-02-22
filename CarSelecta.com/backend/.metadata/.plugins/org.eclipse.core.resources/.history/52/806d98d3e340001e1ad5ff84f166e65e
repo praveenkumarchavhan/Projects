@@ -1,0 +1,51 @@
+package org.program.entity;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Wishlist {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "wishlist_id")
+	private int id;
+	
+	@ManyToOne
+	@JoinTable(name = "wishlist_usedcar",
+	        joinColumns = @JoinColumn(name = "wishlist_id"),
+	        inverseJoinColumns = @JoinColumn(name = "used_car_id"))
+	private List<UsedCar> usedCar;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "wishlists")
+    private List<NewCar> cars;
+	
+	
+//	@ManyToMany
+//	@JoinTable(name = "wishlist_newcar",
+//	        joinColumns = @JoinColumn(name = "wishlist_id"),
+//	        inverseJoinColumns = @JoinColumn(name = "new_car_id"))
+//	private List<NewCar> newCar;
+	
+	@JsonIgnore
+	@ManyToOne 
+	@JoinColumn(name="user_id")
+	private User user;
+
+	
+}

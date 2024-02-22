@@ -1,0 +1,53 @@
+package org.program.entity;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class UsedCar {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "used_car_id")
+	private int usedCarId;
+	@Lob
+	private byte[] image;
+	private String modelName;
+	private String modelBrand;
+	private String modelType;
+	private String priceFrom;
+	private String priceTo;
+	private String mileage;
+	private String fuelType;
+	private String transmission;
+	private String modelYear;
+	
+	@Column(length = 2000)
+	private String description;
+	
+	@ManyToOne
+	@JoinColumn(name="wishlist_id")
+	private WishList wishList;
+	
+	@OneToMany(mappedBy = "usedCar")
+    private List<Rating> ratings;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	
+	
+	
+}

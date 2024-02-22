@@ -1,0 +1,5 @@
+package org.program.entity;
+
+public class Review {
+
+}

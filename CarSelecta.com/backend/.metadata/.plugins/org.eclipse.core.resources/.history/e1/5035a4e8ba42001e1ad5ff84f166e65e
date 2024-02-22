@@ -1,0 +1,9 @@
+package org.program.DTO;
+
+import org.program.entity.CarPricing;
+import org.program.entity.NewCar;
+
+public class NewCarWithPricing {
+	private NewCar newCar;
+    private CarPricing carPricing;
+}

@@ -1,0 +1,61 @@
+package org.program.service;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.program.entity.NewCar;
+import org.program.entity.User;
+import org.program.entity.WishList;
+import org.program.repository.NewCarRepository;
+import org.program.repository.UserRepository;
+import org.program.repository.WishListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Service
+public class WishListService {
+
+	@Autowired
+	private WishListRepository wishListRepository;
+
+	@Autowired
+	private NewCarRepository newCarRepository;
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Transactional
+	public void addToWishListService(List<Integer> favorites, String email) {
+		User user = userRepository.findByEmail(email);
+
+		List<NewCar> cars = newCarRepository.findAllByNewCarIdIn(favorites);
+		
+		WishList wishList = new WishList();
+		wishList.setUser(user);
+		for (NewCar newCar : cars) {
+			wishList.setNewCar(newCar);
+			
+		}
+		wishListRepository.save(wishList);
+	}
+
+	public Set<NewCar> getFavoriteCarsService(String email) {
+		User user = userRepository.findByEmail(email);
+		List<WishList> wishList = wishListRepository.findByUser_UserIdAndNewCarIsNotNull(user.getUserId());
+		Set<NewCar> newCar = new HashSet<>();
+		for (WishList wishlist2 : wishList) {
+			newCar.add(wishlist2.getNewCar());
+		}
+		return newCar;
+	}
+
+	public void deleteFromWishlistService(int newCarId, String email) {
+		
+		User user = userRepository.findByEmail(email);
+		wishListRepository.deleteNewCarFromWishList(newCarId, newCarId);
+	}
+}

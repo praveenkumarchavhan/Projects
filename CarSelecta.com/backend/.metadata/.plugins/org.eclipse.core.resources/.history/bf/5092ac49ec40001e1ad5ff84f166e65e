@@ -1,0 +1,54 @@
+package org.program.entity;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
+@Entity
+public class NewCar {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "new_car_id")
+	private int newCarId;
+	@Lob
+	private byte[] carImage;
+	private String modelName;
+	private String modelBrand;
+	private String modelType;
+	private String price;
+	private String mileage;
+	private String fuelType;
+	private String transmission;
+	private String modelYear;
+	@Column(length = 2000)
+	private String description;
+	@ManyToOne
+	@JoinColumn(name = "admin_id")
+	private Admin admin;
+	
+	@OneToMany(mappedBy = "newCar")
+	private List<Rating> ratings;
+
+//	@ManyToMany(mappedBy = "newCar", cascade = CascadeType.ALL)
+//    private List<Wishlist> wishlist;
+	
+	@ManyToOne
+	@JoinColumn(name = "wishlist_id")
+	private Wishlist wishlist;
+	
+	
+}

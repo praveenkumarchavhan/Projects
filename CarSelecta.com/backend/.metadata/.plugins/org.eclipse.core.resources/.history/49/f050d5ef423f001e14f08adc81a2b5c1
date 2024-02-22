@@ -1,0 +1,5 @@
+package org.program.repository;
+
+public interface UserRepository {
+
+}

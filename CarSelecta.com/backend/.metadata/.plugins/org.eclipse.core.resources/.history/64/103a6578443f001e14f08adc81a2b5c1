@@ -1,0 +1,27 @@
+package org.program.controller;
+
+import org.program.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@CrossOrigin
+public class UserController {
+
+	@Autowired
+	private UserService userService;
+
+	@PostMapping("/user-signup")
+	public void userSignup(@RequestParam("name") String name, @RequestParam("email") String email,
+			@RequestParam("phoneNumber") String phoneNumber, @RequestParam("state") String state,
+			@RequestParam("city") String city, @RequestParam("createPassword") String creaetPassword,
+			@RequestParam("confirmPassword") String confirmPassword) {
+		
+		
+
+	}
+
+}

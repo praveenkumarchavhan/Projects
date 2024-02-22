@@ -1,0 +1,378 @@
+/* styles.css */
+
+.hover-element {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Adding transition for smooth effect */
+}
+
+.hover-element:hover {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.221); /* Shadow increase on hover */
+}
+
+.textContent {
+  position: absolute;
+  z-index: 10;
+  bottom: -100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  transition: 0.3s;
+}
+.card:hover .textContent {
+  bottom: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  margin: 0 -60px; /* Adjust the margin value to control the distance between arrows */
+}
+
+/* Alert pop-up message css :: update, delete,login */
+.alert-popup {
+  position: fixed;
+  top: 10px;
+  right: 0;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px 0 0 5px;
+  transition: transform 0.4s ease-in-out;
+  transform: translateX(100%);
+}
+
+.alert-popup.show {
+  transform: translateX(0);
+}
+
+/* pop-up card for confimation ::delete purpose */
+.hover-pop {
+  cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Adding transition for smooth effect */
+}
+
+.hover-pop:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.432); /* Shadow increase on hover */
+}
+
+/* for login form baground video */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-container {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.img-container img {
+  position: absolute;
+  /* top: 0; */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-container {
+  position: relative;
+  z-index: 2; /* Higher z-index value places the form above the video */
+  /* Additional styling for positioning your login form */
+}
+
+.popover-class {
+  max-width: 600px; /* Set your desired width */
+}
+
+.card {
+  /* position: relative; */
+  /* width: 300px;
+  height: 200px; */
+  
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+.card:hover .card-image {
+  transform: scale(1.1); /* Apply zoom effect on hover */
+}
+
+.circle-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.circle-icon {
+  font-size: 24px; /* Adjust the size as needed */
+}
+
+.k-letter {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px; /* Adjust the size as needed */
+  color: white; /* Set the color to match the circle's color */
+  font-weight: bold;
+  /* color: rgb(184, 25, 184); */
+}
+
+/*input form validations animation */
+.input {
+  color: dimgray;
+}
+
+.input:invalid {
+  animation: justshake 0.3s forwards;
+  color: red;
+}
+
+@keyframes justshake {
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(-5px);
+  }
+}
+
+/* Style for the entire table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* Style for table header cells */
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Style for table data cells */
+td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Alternate row background color */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #ddd;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  padding-right: 20px; /* Add padding to make space for the arrow icon */
+}
+
+
+
+.varfueltype {
+  color: gray; /* Style for the (Diesel) and (Base Model) text */
+}
+
+.dropdown-menu {
+  min-width: 100%; /* Adjust the width of the dropdown menu as needed */
+}
+
+/* Remove default styles from Accordion Header */
+.accordion-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* Customize Accordion Header Text */
+.accordion-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Style Active Accordion Header */
+.accordion-button:not(.collapsed) {
+  color: #007bff; /* Active header text color */
+}
+
+/* Customize Accordion Body */
+.accordion-body {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  /* color: rgb(169, 168, 168); */
+}
+
+.star-rating {
+  display: inline-block;
+}
+
+.half-star {
+  color: orange;
+  position: relative;
+  /* width: 1em;  */
+  overflow: hidden;
+}
+
+.half-star:before {
+  content: "\f089"; /* Unicode character for half-star icon */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+}
+
+.empty-star {
+  color: orange; /* Change the color as desired */
+}
+
+* {
+  font-family: "Roboto", "Sans-Serif", "Arial", sans-serif;
+}
+
+
+
+/* .splide__arrow {
+  font-size: 20px; 
+}
+
+.splide__arrow--prev {
+  left: 50px;
+}
+
+.splide__arrow--next {
+  right: 10px; 
+} */
+
+/* custom.css */
+.nav-link {
+  position: relative; /* To position the pseudo-element */
+  margin-right: 10px;
+}
+
+.nav-link::before {
+  content: ''; /* Create a pseudo-element for the underline */
+  position: absolute;
+  bottom: -2px; /* Adjust the position of the underline */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(255, 170, 0); /* Change this to the color you want */
+  visibility: hidden; /* Initially hidden */
+  transform: scaleX(0); /* Initially no width */
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+.nav-link:hover::before {
+  visibility: visible; /* Show the underline on hover */
+  transform: scaleX(1); /* Full width on hover */
+}
+
+
+/* .floating-chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  height: 500px;
+  z-index: 9999;
+} */
+/* .floating-chatbot.closed {
+  pointer-events: none; 
+  display: none;
+} */
+
+li,
+footer {
+    font-size: 13px;
+    color: rgb(92, 92, 92);
+    line-height: 30px;
+}
+
+.lightb {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.icon {
+    word-spacing: 10px;
+    float: right;
+}
+
+.iconb {
+    color: black;
+}
+
+
+/* India's 1 row css */
+.row2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+footer {
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+    /* background-color: rgb(247, 244, 244); */
+}
+
+.connect {
+    color: black;
+    font-weight: bold;
+}

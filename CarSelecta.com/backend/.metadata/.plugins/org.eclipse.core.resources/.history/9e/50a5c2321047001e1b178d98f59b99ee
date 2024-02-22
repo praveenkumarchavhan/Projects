@@ -1,0 +1,5 @@
+package org.program.controller;
+
+public class EmailDataController {
+
+}

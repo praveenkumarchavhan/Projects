@@ -1,0 +1,28 @@
+package org.program.repository;
+
+import java.util.List;
+
+import org.program.entity.NewCar;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface NewCarRepository extends JpaRepository<NewCar, Integer>{
+//	public List<NewCar>
+	
+	public List<NewCar> findByModelName(String modelName);
+	public List<NewCar> findByModelType(String modelTpe);
+	public List<NewCar> findByModelBrand(String modelBrand);
+	public List<NewCar> findByModelYear(String modelYear);
+	List<NewCar> findAllByNewCarIdIn(List<Integer> carIds);
+	public NewCar findByNewCarId(int newCarId);
+
+	@Query("select c from NewCar c where(c.price like ?1 OR c.price like ?2 OR c.price like ?3 OR c.price like ?4 OR c.price like ?5) AND c.modelType = ?6")
+	public List<NewCar> searchCarByPriceAndType(String minPrice,String price2, String price3, String price4, String maxPrice, String modelType);
+	
+	@Query("select c from NewCar c where(c.price like ?1 OR c.price like ?2 OR c.price like ?3 OR c.price like ?4 OR c.price like ?5 OR c.price like ?6) AND c.modelType = ?7")
+	public List<NewCar> searchCarByPriceAndType(String minPrice,String price2, String price3, String price4,String price5, String maxPrice, String modelType);
+	
+	@Query("select c from NewCar c where(c.price like ?1 OR c.price like ?2 OR c.price like ?3 OR c.price like ?4 OR c.price like ?5 OR c.price like ?6 OR c.price like ?7 OR c.price like ?8 OR c.price like ?9 OR c.price like ?10 OR c.price like ?11 OR c.price like ?12 OR c.price like ?13 OR c.price like ?14 OR c.price like ?15 OR c.price like ?16) AND c.modelType = ?17")
+	public List<NewCar> searchCarByPriceAndType(String minPrice,String price2, String price3, String price4,String price5,String price6,String price7,String price8,String price9,String price10,String price11,String price12,String price13,String price14,String price15, String maxPrice, String modelType);
+	
+}
